@@ -101,13 +101,13 @@ list_of_tuple=nltk.FreqDist(words_bigrams_with_double).most_common()# Созда
 
 freq_in_full_corpus_dict={k:v for k,v in list_of_tuple} # Создание словаря: слово и частота встречи в рамках всего сборника Строчка 2 (из 2)
 
-freq_in_full_corpus_no_twice_dict={k:v for k,v in freq_in_full_corpus_dict.items() if v>2} #Слова которые встречаются более одного раза в рамках всего сборника (Мешок слов)
+freq_in_full_corpus_no_twice_dict={k:v for k,v in freq_in_full_corpus_dict.items() if v>2} #Слова которые встречаются более двух раз в рамках всего сборника (Мешок слов)
                                                                                           # (Слово-частота встречи в корпусе)
 freq_in_article_no_twice_dict=[{k:article[k] for k,_ in freq_in_full_corpus_no_twice_dict.items()} for article in frequency_in_article] #Слова которые встречаются более одного раза
                                                                                                                                       # в рамках всего сборника (Мешок слов)
                                                                                                                                       # (Слово-частота встречи в одной статье)
 
-num_doc = []#Вектор: в скольких документах встечается данное слово (для Tf-IDf)
+num_doc = [] # Вектор: в скольких документах встечается данное слово (для Tf-IDf)
 num=0
 for word in list(freq_in_full_corpus_no_twice_dict.keys()):
     for i in range(0,len(text_split_on_article)):
